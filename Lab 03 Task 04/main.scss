@@ -1,0 +1,64 @@
+// main.scss
+
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+body {
+    background-color: #f8f9fa;
+}
+
+.custom-container {
+    margin-top: 30px;
+
+    .row {
+        text-align: center;
+
+        h2 {
+            color: $primary-color;
+        }
+    }
+
+    .custom-form {
+        background-color: $form-bg-color;
+        padding: 20px;
+        border-radius: $form-border-radius;
+        @include box-shadow();
+
+        .form-group {
+            label {
+                color: $primary-color;
+            }
+
+            input {
+                border: 1px solid $secondary-color;
+                border-radius: 5px;
+
+                &:focus {
+                    border-color: $primary-color;
+                }
+            }
+        }
+
+        button {
+            @extend .btn;
+            margin-top: 10px;
+        }
+
+        button.btn-primary {
+            background-color: $primary-color;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+
+        button.btn-secondary {
+            background-color: $secondary-color;
+
+            &:hover {
+                background-color: darken($secondary-color, 10%);
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+// _colors.scss
+body {
+    background-color: $background-light;
+}
+
+button {
+    background-color: $primary-color;
+    color: #fff;
+}
+
+#removeAllNew {
+    background-color: $danger-color;
+}
+
+.history-list li.lab2 {
+    color: $success-color;
+}
+
+.history-list li:not(.lab2) {
+    color: $primary-color;
+}
+
+.profile-link img {
+    border: none;
+    text-decoration: none;
+}

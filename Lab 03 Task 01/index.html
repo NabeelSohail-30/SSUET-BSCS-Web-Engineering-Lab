@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Form</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="bg-purple">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="text-center mb-4">Login</h2>
+              <form action="#">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="fas fa-envelope"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="fas fa-lock"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      placeholder="Enter your password"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="rememberMe"
+                  />
+                  <label class="form-check-label" for="rememberMe"
+                    >Remember Me</label
+                  >
+                </div>
+                <div class="text-center mt-4">
+                  <button type="button" class="btn btn-primary" id="okButton">
+                    OK
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelButton"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JhV5PQFL6iJ0v5PIxX5ng6t5Z7x4I5HpjJAIjHjw9XfojNx2U9jy3VaCmNlRbN"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer>
+      const findInputs = () => {
+        return Array.from(document.querySelectorAll(".input-box input"));
+      };
+
+      const validateInputs = () => {
+        const inputs = findInputs();
+        return inputs.every((input) => input.value.trim() !== "");
+      };
+
+      const login = () => {
+        const rememberMeChecked = document.getElementById("rememberMe").checked;
+
+        if (rememberMeChecked) {
+          alert("Logged in successfully with Remember Me marked as set");
+        } else {
+          alert("Logged in successfully");
+        }
+      };
+
+      const clearInputs = () => {
+        const inputs = findInputs();
+        inputs.forEach((input) => (input.value = ""));
+      };
+
+      document.getElementById("okButton").addEventListener("click", () => {
+        const inputsFilled = validateInputs();
+
+        if (!inputsFilled) {
+          alert("Please enter Login ID and Password");
+          return;
+        }
+
+        login();
+      });
+
+      document.getElementById("cancelButton").addEventListener("click", () => {
+        clearInputs();
+      });
+    </script>
+  </body>
+</html>

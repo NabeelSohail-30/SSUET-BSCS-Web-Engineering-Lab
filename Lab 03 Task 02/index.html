@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Profile</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Profile</h1>
+      <div class="img">
+        <img
+          src="https://static8.depositphotos.com/1008303/880/i/450/depositphotos_8803246-stock-photo-asian-college-student.jpg"
+          alt="Student Image"
+        />
+      </div>
+      <div class="text">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
+          velit error minima dicta odio unde quibusdam facere at inventore
+          voluptate, molestias voluptatum vel explicabo reiciendis quia
+          adipisci! Quas, rem quibusdam!
+        </p>
+      </div>
+      <div class="table-sec">
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Course ID</th>
+              <th>Course Name</th>
+              <th>Credit Hours</th>
+              <th>Year Taken</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>101</td>
+              <td>Introduction to Programming</td>
+              <td>3</td>
+              <td>2022</td>
+            </tr>
+            <tr>
+              <td>201</td>
+              <td>Data Structures</td>
+              <td>4</td>
+              <td>2023</td>
+            </tr>
+            <tr>
+              <td>301</td>
+              <td>Web Development</td>
+              <td>3</td>
+              <td>2023</td>
+            </tr>
+            <tr>
+              <td>401</td>
+              <td>Database Management</td>
+              <td>3</td>
+              <td>2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btns">
+        <button onclick="searchAndHighlight()">Search and Highlight</button>
+        <button id="addCourse">Add New Course</button>
+        <button id="updateCourse">Update Course</button>
+        <button id="removeCourse">Remove Course</button>
+      </div>
+      <div class="int-section">
+        <h2>Interests</h2>
+        <ul>
+          <li><a href="https://www.ssuet.edu.pk/">SSUET University Home</a></li>
+          <li>
+            <a href="https://www.ssuet.edu.pk/Home/Students/ScholarshipNotice"
+              >SSUET University Home -> Students -> Scholarship Notice</a
+            >
+          </li>
+          <li>
+            <a href="https://www.ssuet.edu.pk/Home/NewsEvents/EventsCalendar"
+              >SSUET University Home -> News and Events -> Events Calendar</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    function searchAndHighlight() {
+      var userInput = prompt("Enter course ID to search:");
+      var table = document.querySelector("table");
+      var rows = table.querySelectorAll("tr");
+
+      for (var i = 1; i < rows.length; i++) {
+        // Start from 1 to skip the header row
+        var cells = rows[i].querySelectorAll("td");
+        var courseId = cells[0].textContent;
+
+        if (courseId === userInput) {
+          rows[i].style.backgroundColor = "yellow"; // Highlight the matching row
+          return;
+        }
+      }
+
+      alert("Course not found!");
+    }
+
+    document.getElementById("addCourse").addEventListener("click", function () {
+      var tableBody = document.querySelector("table tbody");
+      var newRow = tableBody.insertRow();
+      for (var i = 0; i < 4; i++) {
+        var cell = newRow.insertCell(i);
+        cell.textContent = "New Value";
+      }
+    });
+
+    document
+      .getElementById("updateCourse")
+      .addEventListener("click", function () {
+        var selectedRow = document.querySelector("table tbody tr");
+        if (selectedRow) {
+          var cells = selectedRow.cells;
+          for (var i = 0; i < cells.length; i++) {
+            cells[i].textContent = "Updated Value";
+          }
+        }
+      });
+
+    document
+      .getElementById("removeCourse")
+      .addEventListener("click", function () {
+        var selectedRow = document.querySelector("table tbody tr");
+        if (selectedRow) {
+          selectedRow.remove();
+        }
+      });
+  </script>
+</html>

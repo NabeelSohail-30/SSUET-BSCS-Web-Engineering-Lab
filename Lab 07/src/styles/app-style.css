@@ -1,0 +1,12 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.students {
+  color: #00f;
+}
+.faculties {
+  color: green;
+}
+.events {
+  color: red;
+}
